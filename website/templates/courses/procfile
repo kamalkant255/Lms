@@ -1,2 +1,2 @@
-web: gunicorn course.wsgi --log-file
-$ heroku ps:scale web=1
+
+web: gunicorn wsgi:app --log-file
