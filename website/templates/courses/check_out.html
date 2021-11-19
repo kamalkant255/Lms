@@ -1,0 +1,113 @@
+{% extends 'courses/base.html' %}
+{% load course_custom_tags %}
+{% block title %}Checkout Page | Courses{% endblock %}
+{% block main %}
+
+<div class="container">
+    <h1 class="display-4 alert border text-center">CheckOut page</h1>
+    <hr>
+    <hr>
+    
+    <div class="row">
+        <div class="col mx-auto">
+            <div class="card mx-auto border" style="width: 18rem;">
+                <img src="{{course.thumbnail.url}}" class="img-responsivecard-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{course.name}}</h5>
+                  
+                  <p class="card-text">
+                    Save {{course.discount}}%<br>
+                    <span class="price">
+                      <del> {{course.price|rupee}}</del>
+                    &nbsp;
+                    <h1></h1>
+                    <span>{% cal_sellprice course.price course.discount as value%} {{value|rupee}} </span>
+                    </span>
+                
+                </p>
+                
+                </div>
+                
+              </div> 
+         </div>  
+         <div class="col">
+            <div>
+                <p class="display-5">{{course.name}}</p>
+                <hr>
+                {% if coupon %}
+                
+
+                <p class="display-5">Payable Amount : <b>{% cal_sellprice course.price coupon.discount as value%} {{value|rupee}}</b></p>
+
+              {% else %}
+
+
+                <p class="display-5">Payable Amount : <b>{% cal_sellprice course.price course.discount as value%} {{value|rupee}}</b></p>
+                {% endif %}
+                <a class="btn btn-light border" href="?action=create_payment">Continue to Payment</a>
+            </div>
+
+            <br>
+<div class="border p-4 rounded border-success">
+  {% if coupon_code_message %}
+  <div class="alert alert-info">
+    {{coupon_code_message}}
+  </div>
+  {% endif %}
+<p> Coupon Code</p>
+
+<div class="col-lg-5 form-group">
+  <input type="text" name="couponcode" class="form-control">
+</div>
+<div class="form-group">
+  <input type="submit" value="Apply" class="btn btn-primary">
+</div>
+</form>
+
+</div>
+
+         </div>
+    </div>
+
+
+</div>
+{% if order is not None %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+
+var options={
+  "key":"rzp_test_ZAjis9VeZ62eho",
+  "name" :"Codecarry",
+  "description":"Payment for {{course.name}}",
+  "image":"data:image/png;base64,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",
+  "order_id":"{{order.id}}",
+  "callback_url":"http://127.0.0.1:8000/verify_payment",
+  "prefill":{
+    "name":"{{user.first_name}}",
+    "email":"{{user.email}}",
+    "contact":""
+
+  },
+  "theme":{
+    "color":"#3399cc"
+  }
+};
+var rzp1 = new Razorpay(options);
+rzp1.open();
+
+
+
+
+
+  
+</script>
+    {% endif %}
+
+{% if error is not None %} 
+<script>
+  window.onload=()=>{
+  alert("{{error}}")
+}
+</script> 
+{% endif %}
+{% endblock %}
