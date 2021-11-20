@@ -122,7 +122,7 @@ USE_TZ = True
 
 #STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
-'''
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
@@ -130,17 +130,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 MEDIA_URL = '/media/'
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR
 
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-'''
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
-STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) 
+#STATIC_URL = '/static/'
+#STATICFILES_DIRS = (str(BASE_DIR.joinpath('staticfiles')),)
+#STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # new
 
 
