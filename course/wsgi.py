@@ -13,7 +13,7 @@ from django.core.wsgi import get_wsgi_application
 
 from whitenoise import WhiteNoise
 
-from my_project import MyWSGIApp
+from course import MyWSGIApp
 
 
 application = MyWSGIApp()
