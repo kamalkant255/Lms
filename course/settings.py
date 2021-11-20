@@ -121,18 +121,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 #STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+
+'''
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 MEDIA_URL = '/media/'
 
-#MEDIA_URL = '/media/'
-#MEDIA_ROOT = BASE_DIR
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR
 
 
-#STATIC_ROOT = 'staticfiles'
-#STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+'''
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # new
+
+
 
 KEY_ID="rzp_test_ZAjis9VeZ62eho"
 KEY_SECRET="nwR9wT53QSGX5UTB9OHzW4kj"
