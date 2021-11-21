@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'website',
 ]
@@ -122,21 +123,13 @@ USE_TZ = True
 
 #STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
-MEDIA_URL = '/media/'
-
-
-
-#STATIC_URL = '/static/'
-#STATICFILES_DIRS = (str(BASE_DIR.joinpath('staticfiles')),)
-#STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) 
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('website/static')),)
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles')) 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # new
 
-
+MEDIA_URL='/media/'
+MEDIA_ROOT='/media/'
 
 KEY_ID="rzp_test_ZAjis9VeZ62eho"
 KEY_SECRET="nwR9wT53QSGX5UTB9OHzW4kj"

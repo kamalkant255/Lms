@@ -16,8 +16,8 @@ urlpatterns = [
     path('course/<str:slug>',coursepage,name='coursepage'),
     path('check-out/<str:slug>',checkout,name='check-out'),
     path('verify_payment',verifyPayment,name='verify_payment'),
-]
 
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns+=static(MEDIA_URL,document_root=MEDIA_ROOT)
 
 urlpatterns+=static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
